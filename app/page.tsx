@@ -424,7 +424,7 @@ export default function Portfolio() {
                 <p className="text-sm text-gray-500">
                   Modern LLMs still have a long way to go when it comes to
                   playing or understanding chess. This is an experimental
-                  approach that uses a combination of stockfish and a LLM to
+                  approach that uses a combination of stockfish and an LLM to
                   analyze and improve your chess moves.
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2">
