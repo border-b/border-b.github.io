@@ -2,17 +2,20 @@
 
 import type React from "react";
 
-import { useRef, useState, useEffect } from "react";
+import { useRef } from "react";
 import {
   ExternalLink,
   Github,
   Mail,
-  ChevronLeft,
-  ChevronRight,
   ChevronDown,
   Trophy,
   Award,
-  Star,
+  CircleCheck,
+  Users,
+  BookOpen,
+  School,
+  Heart,
+  Lightbulb,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -24,15 +27,17 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
 
 export default function Portfolio() {
   // Refs for smooth scrolling
+  const heroRef = useRef<HTMLDivElement | null>(null);
   const workRef = useRef<HTMLDivElement | null>(null);
   const projectsRef = useRef<HTMLDivElement | null>(null);
   const publicationsRef = useRef<HTMLDivElement | null>(null);
   const awardsRef = useRef<HTMLDivElement | null>(null);
   const competitiveRef = useRef<HTMLDivElement | null>(null);
+  const outreachRef = useRef<HTMLDivElement | null>(null);
 
   // Smooth scroll function
   const scrollToSection = (ref: React.RefObject<HTMLDivElement | null>) => {
@@ -44,7 +49,11 @@ export default function Portfolio() {
       {/* Navigation */}
       <header className="sticky top-0 z-10 border-b bg-white/80 backdrop-blur-sm">
         <div className="container flex h-16 items-center justify-between">
-          <div className="font-semibold">Seemanta Bhattacharjee</div>
+          <div className="font-semibold">
+            <button onClick={() => scrollToSection(heroRef)}>
+              Seemanta Bhattacharjee
+            </button>
+          </div>
           <nav className="hidden md:flex items-center gap-6">
             <button
               onClick={() => scrollToSection(workRef)}
@@ -76,6 +85,12 @@ export default function Portfolio() {
             >
               Competitive Programming
             </button>
+            <button
+              onClick={() => scrollToSection(outreachRef)}
+              className="text-sm font-medium hover:text-black/70 transition-colors"
+            >
+              Outreach
+            </button>
           </nav>
           <div className="flex items-center gap-2">
             <Button
@@ -105,7 +120,7 @@ export default function Portfolio() {
       </header>
 
       {/* Hero Section */}
-      <section className="container py-12 md:py-24 lg:py-32">
+      <section ref={heroRef} className="container py-12 md:py-24 lg:py-32">
         <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_450px]">
           <div className="flex flex-col justify-center space-y-4">
             <div className="space-y-2">
@@ -126,9 +141,13 @@ export default function Portfolio() {
                 View Work
                 <ChevronDown className="ml-2 h-4 w-4" />
               </Button>
-              <Button variant="outline"
+              <Button
+                variant="outline"
                 onClick={() => {
-                  window.open("https://drive.google.com/file/d/1CWP-BNMYnl5PzDjCaR5dT3j2TQDhApV9/view?usp=sharing", "_blank");
+                  window.open(
+                    "https://drive.google.com/file/d/1CWP-BNMYnl5PzDjCaR5dT3j2TQDhApV9/view?usp=sharing",
+                    "_blank"
+                  );
                 }}
               >
                 Download CV
@@ -141,7 +160,6 @@ export default function Portfolio() {
                 src="/seemanta.jpeg?height=256&width=256"
                 alt="Seemanta"
               />
-              <AvatarFallback>JD</AvatarFallback>
             </Avatar>
           </div>
         </div>
@@ -180,11 +198,12 @@ export default function Portfolio() {
                     type-safe code.
                   </li>
                   <li>
-                    Created the Docker container image and accompanying scripts
-                    for deploying the service.
+                    Developed Docker container images and accompanying
+                    deployment scripts to automate service rollout.
                   </li>
                   <li>
-                    Configured database recovery with Litestream replication.
+                    Enabled precise point-in-time database snapshot restoration
+                    for rapid data recovery.
                   </li>
                   <li>
                     Developed observability dashboard to monitor and debug
@@ -248,11 +267,12 @@ export default function Portfolio() {
                     analytics platform.
                   </li>
                   <li>
-                    Used Turbopuffer to index and store data over hundreds of
-                    document types.
+                    Used Turbopuffer to index, catalog, and manage data across
+                    hundreds of document types for rapid search and retrieval.
                   </li>
                   <li>
-                    Built the assistant tool to analyze user-uploaded compliance
+                    Developed an intelligent assistant tool to automatically
+                    analyze and extract insights from user-uploaded compliance
                     documents.
                   </li>
                 </ul>
@@ -281,6 +301,12 @@ export default function Portfolio() {
                   >
                     React
                   </Badge>
+                  <Badge
+                    variant="outline"
+                    className="transition-colors hover:bg-gray-100"
+                  >
+                    TypeScript
+                  </Badge>
                 </div>
               </div>
             </div>
@@ -302,22 +328,20 @@ export default function Portfolio() {
                     Software Engineer (Contract)
                   </p>
                 </div>
-                <p className="text-gray-600">
-                  <ul className="text-gray-600 list-disc list-inside space-y-1">
-                    <li>
-                      Taught AI coding agents how to solve problems in
-                      competitive programming
-                    </li>
-                    <li>
-                      Automated stress testing and failure-case generation via
-                      Bash to boost code robustness.
-                    </li>
-                    <li>
-                      Streamlined AI workflows with Python, TensorFlow, and
-                      PyTorch
-                    </li>
-                  </ul>
-                </p>
+                <ul className="text-gray-600 list-disc list-inside space-y-1">
+                  <li>
+                    Taught AI coding agents how to solve problems in competitive
+                    programming
+                  </li>
+                  <li>
+                    Automated stress testing and failure-case generation via
+                    Bash to boost code robustness.
+                  </li>
+                  <li>
+                    Streamlined AI workflows with Python, TensorFlow, and
+                    PyTorch
+                  </li>
+                </ul>
                 <div className="flex flex-wrap gap-2">
                   <Badge
                     variant="outline"
@@ -428,7 +452,6 @@ export default function Portfolio() {
                   analyze and improve your chess moves.
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2">
-                  <Badge variant="secondary">Typescript</Badge>
                   <Badge variant="secondary">Engine Analysis</Badge>
                   <Badge variant="secondary">LLM</Badge>
                   <Badge variant="secondary">Chess</Badge>
@@ -671,7 +694,8 @@ export default function Portfolio() {
                     <p className="text-sm text-gray-500">2013</p>
                   </div>
                   <p className="text-gray-600">
-                    Chittagong Divisional Champion in the largest mathematical olympiad in Bangladesh.
+                    Chittagong Divisional Champion in the largest mathematical
+                    olympiad in Bangladesh.
                   </p>
                 </div>
               </div>
@@ -707,7 +731,7 @@ export default function Portfolio() {
                 <div className="space-y-2 relative">
                   <div>
                     <h3 className="text-xl font-bold">
-                      Government Scholarship
+                      Government Talent Pool Scholarship
                     </h3>
                     <p className="text-sm text-gray-500">2010–2021</p>
                   </div>
@@ -732,7 +756,7 @@ export default function Portfolio() {
               Competitive Programming
             </h2>
             <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl">
-              Profiles in online competitive programming platforms
+              Journey as a competitive programmer
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -827,11 +851,377 @@ export default function Portfolio() {
               </CardFooter>
             </Card>
           </div>
+
+          {/* Problem Setter Experience - Two Column Layout */}
+          <div className="mt-12">
+            <div className="grid gap-6 md:grid-cols-2">
+              {/* Left Card - International Problems */}
+              <Card className="transition-all duration-300 hover:shadow-lg hover:scale-[1.01] hover:z-10">
+                <CardHeader>
+                  <CardTitle>International Problem Setting</CardTitle>
+                  <CardDescription>
+                    Judge and Problem Author for International Platforms
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="pt-0">
+                  <div className="flex flex-col space-y-6">
+                    <div className="flex justify-center space-x-8 py-2">
+                      <div className="flex flex-col items-center">
+                        <div className="w-24 h-24 rounded-full bg-blue-100 flex items-center justify-center shadow-sm hover:shadow-md transition-shadow">
+                          <img
+                            src="/chef-icon.png"
+                            alt="CodeChef"
+                            className="rounded-full object-cover border-2 border-white shadow"
+                          />
+                        </div>
+                        <p className="mt-2 text-sm font-medium">CodeChef</p>
+                      </div>
+                      <div className="flex flex-col items-center">
+                        <div className="w-24 h-24 rounded-full bg-green-100 flex items-center justify-center shadow-sm hover:shadow-md transition-shadow">
+                          <img
+                            src="/hackerearth-icon.png"
+                            alt="HackerEarth"
+                            className="rounded-full object-cover border-2 border-white shadow"
+                          />
+                        </div>
+                        <p className="mt-2 text-sm font-medium">HackerEarth</p>
+                      </div>
+                      <div className="flex flex-col items-center">
+                        <div className="w-24 h-24 rounded-full bg-purple-100 flex items-center justify-center shadow-sm hover:shadow-md transition-shadow">
+                          <img
+                            src="/codedrills-icon.jpeg"
+                            alt="CodeDrills"
+                            className="rounded-full object-cover border-2 border-white shadow"
+                          />
+                        </div>
+                        <p className="mt-2 text-sm font-medium">CodeDrills</p>
+                      </div>
+                    </div>
+
+                    <div className="bg-gray-50 p-4 rounded-lg border border-gray-100">
+                      <h4 className="text-sm font-semibold mb-2 flex items-center">
+                        <Trophy className="h-4 w-4 mr-2 text-yellow-500" />
+                        Contribution Highlights
+                      </h4>
+                      <ul className="text-sm text-gray-600 space-y-2">
+                        <li className="flex items-start">
+                          <div className="min-w-4 mr-2 mt-1">•</div>
+                          <span>
+                            Created algorithmic challenges for international
+                            coding competitions
+                          </span>
+                        </li>
+                        <li className="flex items-start">
+                          <div className="min-w-4 mr-2 mt-1">•</div>
+                          <span>
+                            Designed test cases to validate solution correctness
+                            and efficiency
+                          </span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Right Card - IUPC Problems */}
+              <Card className="transition-all duration-300 hover:shadow-lg hover:scale-[1.01] hover:z-10">
+                <CardHeader>
+                  <CardTitle>Inter-University Programming Contests</CardTitle>
+                  <CardDescription>
+                    Judge and Problem Author for National level Inter University
+                    Programming Competitions
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-3 py-4">
+                    <li className="flex items-center">
+                      <div className="w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center mr-3">
+                        <CircleCheck className="h-4 w-4 text-yellow-600" />
+                      </div>
+                      <span className="text-gray-700">
+                        Miaki Presents IUPC | KUET BitFest 2025
+                      </span>
+                    </li>
+                    <li className="flex items-center">
+                      <div className="w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center mr-3">
+                        <CircleCheck className="h-4 w-4 text-yellow-600" />
+                      </div>
+                      <span className="text-gray-700">
+                        IUT 11th National ICT Fest 2024
+                      </span>
+                    </li>
+                    <li className="flex items-center">
+                      <div className="w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center mr-3">
+                        <CircleCheck className="h-4 w-4 text-yellow-600" />
+                      </div>
+                      <span className="text-gray-700">
+                        Kite Games IUPC | SUST CSE Carnival 2024
+                      </span>
+                    </li>
+                    <li className="flex items-center">
+                      <div className="w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center mr-3">
+                        <CircleCheck className="h-4 w-4 text-yellow-600" />
+                      </div>
+                      <span className="text-gray-700">15th IIUC IUPC 2023</span>
+                    </li>
+                    <li className="flex items-center">
+                      <div className="w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center mr-3">
+                        <CircleCheck className="h-4 w-4 text-yellow-600" />
+                      </div>
+                      <span className="text-gray-700">
+                        SEC Inter University Junior PC 2022
+                      </span>
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Outreach Section */}
+      <section ref={outreachRef} className="bg-white py-12 md:py-24">
+        <div className="container space-y-6 md:space-y-12">
+          <div className="space-y-2 text-center">
+            <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">
+              Outreach
+            </h2>
+            <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl">
+              Mentoring and training the next generation of competitive
+              programmers
+            </p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {/* Card 1: Bangladesh Competitive Programming Society */}
+            <Card className="transition-all duration-300 hover:shadow-lg hover:scale-[1.01] hover:z-10">
+              <div className="h-2 bg-red-500 rounded-t-lg"></div>
+              <CardHeader className="pb-2">
+                <CardTitle className="text-xl">
+                  Bangladesh Competitive Programming Society
+                </CardTitle>
+                <CardDescription>
+                  Training Contest Manager{" "}
+                  <span className="text-xs text-gray-500 ml-1">
+                    2022 - Present
+                  </span>
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex items-start">
+                  <div className="mr-4 mt-1">
+                    <Heart className="h-5 w-5 text-red-500" />
+                  </div>
+                  <p className="text-sm text-gray-600">
+                    Founding member of the{" "}
+                    <span className="font-semibold">largest</span> Competitive
+                    Programming Discord Community in Bangladesh, with{" "}
+                    <span className="font-semibold">over 11,000</span> active
+                    members.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Card 2: Bangladesh Mathematical Olympiad */}
+            <Card className="transition-all duration-300 hover:shadow-lg hover:scale-[1.01] hover:z-10">
+              <div className="h-2 bg-green-500 rounded-t-lg"></div>
+              <CardHeader className="pb-2">
+                <CardTitle className="text-xl">
+                  Bangladesh Mathematical Olympiad
+                </CardTitle>
+                <CardDescription>
+                  Academic Team Member{" "}
+                  <span className="text-xs text-gray-500 ml-1">
+                    2018 - 2020
+                  </span>
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex items-start mb-4">
+                  <div className="mr-4 mt-1">
+                    <BookOpen className="h-5 w-5 text-green-500" />
+                  </div>
+                  <p className="text-sm text-gray-600">
+                    Authored problems for BdMO contests with participation from{" "}
+                    <span className="font-semibold">over 40,000 students</span>{" "}
+                    nationwide.
+                  </p>
+                </div>
+                <div className="flex items-start">
+                  <div className="mr-4 mt-1">
+                    <Lightbulb className="h-5 w-5 text-green-500" />
+                  </div>
+                  <p className="text-sm text-gray-600">
+                    Contributed to the evaluation and selection of problems for
+                    the competition.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Card 3: SUST Competitive Programming Lab */}
+            <Card className="transition-all duration-300 hover:shadow-lg hover:scale-[1.01] hover:z-10">
+              <div className="h-2 bg-blue-500 rounded-t-lg"></div>
+              <CardHeader className="pb-2">
+                <CardTitle className="text-xl">
+                  SUST Competitive Programming Lab
+                </CardTitle>
+                <CardDescription>
+                  Trainer{" "}
+                  <span className="text-xs text-gray-500 ml-1">
+                    2022 - 2024
+                  </span>
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex items-start mb-4">
+                  <div className="mr-4 mt-1">
+                    <Users className="h-5 w-5 text-blue-500" />
+                  </div>
+                  <p className="text-sm text-gray-600">
+                    Trained <span className="font-semibold">200+ students</span>{" "}
+                    in competitive programming, preparing them for national and
+                    international contests.
+                  </p>
+                </div>
+                <div className="flex items-start">
+                  <div className="mr-4 mt-1">
+                    <Trophy className="h-5 w-5 text-blue-500" />
+                  </div>
+                  <p className="text-sm text-gray-600">
+                    Set weekly training contests, provided feedback, and helped
+                    form ICPC teams that attended the{" "}
+                    <span className="font-semibold">ICPC World Finals</span>.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Card 4: Chittagong Junior Coders */}
+            <Card className="transition-all duration-300 hover:shadow-lg hover:scale-[1.01] hover:z-10">
+              <div className="h-2 bg-orange-500 rounded-t-lg"></div>
+              <CardHeader className="pb-2">
+                <CardTitle className="text-xl">
+                  Chittagong Junior Coders
+                </CardTitle>
+                <CardDescription>
+                  Trainer, Algorithms Workshop{" "}
+                  <span className="text-xs text-gray-500 ml-1">
+                    2018 - 2019
+                  </span>
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex items-start">
+                  <div className="mr-4 mt-1">
+                    <School className="h-5 w-5 text-orange-500" />
+                  </div>
+                  <p className="text-sm text-gray-600">
+                    Mentored{" "}
+                    <span className="font-semibold">
+                      50 high school students
+                    </span>{" "}
+                    in foundational competitive programming, providing
+                    introductory classes on algorithms and data structures.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Card 5: Pabna University Workshop */}
+            <Card className="transition-all duration-300 hover:shadow-lg hover:scale-[1.01] hover:z-10">
+              <div className="h-2 bg-purple-500 rounded-t-lg"></div>
+              <CardHeader className="pb-2">
+                <CardTitle className="text-xl">PUST CP Workshop</CardTitle>
+                <CardDescription>
+                  Guest Trainer{" "}
+                  <span className="text-xs text-gray-500 ml-1">2023</span>
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex items-start">
+                  <div className="mr-4 mt-1">
+                    <Award className="h-5 w-5 text-purple-500" />
+                  </div>
+                  <p className="text-sm text-gray-600">
+                    Led a three-month intensive program for ICPC preparation,
+                    helping two teams qualify for the{" "}
+                    <span className="font-semibold">
+                      first time in the university's history
+                    </span>
+                    .
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Improved Book Card */}
+          <Card className="transition-all duration-300 hover:shadow-lg hover:scale-[1.01] hover:z-10">
+            <CardHeader>
+              <div className="flex items-start justify-between">
+                <div>
+                  <CardTitle>
+                    Introduction to Math Olympiad (Primary Category)
+                  </CardTitle>
+                  <CardDescription className="mt-1">
+                    Co-authored guidebook for young math enthusiasts
+                  </CardDescription>
+                </div>
+                <Badge>Book</Badge>
+              </div>
+            </CardHeader>
+            <div className="px-8 py-4 flex flex-col md:flex-row gap-6">
+              <div className="md:w-[10%] flex justify-center md:justify-start">
+                <img
+                  src="/book.jpg"
+                  alt="Math Olympiad Book Cover"
+                  className="rounded-md w-full h-auto object-cover shadow-md border border-gray-200"
+                />
+              </div>
+              <div className="md:w-[70%]">
+                <p className="text-sm text-gray-500 mb-3">
+                  I co-authored a Bengali guidebook that gently introduces
+                  children to core problem-solving techniques and prepares them
+                  for Math Olympiads. Filled with step-by-step exercises, clear
+                  visual explanations, and fun, thought-provoking challenges,
+                  it’s designed to nurture young learners’ mathematical
+                  intuition from the ground up.
+                </p>
+                <div className="flex flex-wrap gap-2 mt-4">
+                  <Badge variant="secondary">Problem Solving</Badge>
+                  <Badge variant="secondary">Mathematics</Badge>
+                  <Badge variant="secondary">Education</Badge>
+                </div>
+                <p className="text-xs text-gray-400 mt-3">
+                  Published by Swapno '71 Publication, 2023
+                </p>
+              </div>
+            </div>
+            <CardFooter>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => {
+                  window.open(
+                    "https://www.rokomari.com/book/288872/gonit-olympiad-er-hate-khori-primary",
+                    "_blank"
+                  );
+                }}
+              >
+                <ExternalLink className="mr-2 h-4 w-4" />
+                View on Rokomari
+              </Button>
+            </CardFooter>
+          </Card>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t py-6 md:py-8">
+      <footer className="border-t py-6 md:py-8 bg-gray-50">
         <div className="container flex flex-col items-center justify-between gap-4 md:flex-row">
           <div className="text-center md:text-left">
             <p className="text-sm text-gray-500">
