@@ -27,7 +27,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
 
 export default function Portfolio() {
   // Refs for smooth scrolling
@@ -133,7 +132,7 @@ export default function Portfolio() {
               </p>
             </div>
             <p className="max-w-[600px] text-gray-500 md:text-xl">
-              Exploring quantum algorithms for machine learning, and trustworthy
+              Exploring quantum algorithms for machine learning and trustworthy
               AI-assisted software development.
             </p>
             <div className="flex flex-col gap-2 min-[400px]:flex-row">
@@ -155,12 +154,11 @@ export default function Portfolio() {
             </div>
           </div>
           <div className="flex items-center justify-center">
-            <Avatar className="h-80 w-80">
-              <AvatarImage
-                src="/seemanta.jpeg?height=256&width=256"
-                alt="Seemanta"
-              />
-            </Avatar>
+            <img
+              src="/seemanta.jpeg"
+              alt="Seemanta Bhattacharjee"
+              className="h-80 w-80 rounded-full object-cover border-4 border-gray-200 shadow-lg"
+            />
           </div>
         </div>
       </section>
@@ -331,7 +329,7 @@ export default function Portfolio() {
                 <ul className="text-gray-600 list-disc list-inside space-y-1">
                   <li>
                     Taught AI coding agents how to solve problems in competitive
-                    programming
+                    programming.
                   </li>
                   <li>
                     Automated stress testing and failure-case generation via
@@ -339,7 +337,7 @@ export default function Portfolio() {
                   </li>
                   <li>
                     Streamlined AI workflows with Python, TensorFlow, and
-                    PyTorch
+                    PyTorch.
                   </li>
                 </ul>
                 <div className="flex flex-wrap gap-2">
@@ -354,6 +352,12 @@ export default function Portfolio() {
                     className="transition-colors hover:bg-gray-100"
                   >
                     Algorithms
+                  </Badge>
+                  <Badge
+                    variant="outline"
+                    className="transition-colors hover:bg-gray-100"
+                  >
+                    Bash
                   </Badge>
                   <Badge
                     variant="outline"
@@ -715,8 +719,8 @@ export default function Portfolio() {
                     <p className="text-sm text-gray-500">2016</p>
                   </div>
                   <p className="text-gray-600">
-                    Ranked 2nd among 100+ participants in National High School
-                    Programming Contest 2016.
+                    Secured 2nd place out of 100+ participants in the 2016
+                    National High School Programming Contest divisional round.
                   </p>
                 </div>
               </div>
@@ -740,6 +744,48 @@ export default function Portfolio() {
                     stipend by the Board of Intermediate and Secondary Education
                     for outstanding performance in the national board
                     examinations.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Award Card 7 - Samsung R&D */}
+            <div className="group bg-gray-50 p-6 rounded-lg shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1 relative overflow-hidden">
+              <div className="flex items-start gap-4">
+                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-yellow-50 text-yellow-500 transition-colors duration-300 group-hover:bg-yellow-100">
+                  <Trophy className="h-6 w-6" />
+                </div>
+                <div className="space-y-2 relative">
+                  <div>
+                    <h3 className="text-xl font-bold">
+                      Samsung R&D Code Competition
+                    </h3>
+                    <p className="text-sm text-gray-500">2022</p>
+                  </div>
+                  <p className="text-gray-600">
+                    Ranked among top 2% of 1600+ participants in the SRBD Code
+                    Contest, organized by Samsung R&D Institute Bangladesh.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Award Card 8 - Inter University Programming Contests */}
+            <div className="group bg-gray-50 p-6 rounded-lg shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1 relative overflow-hidden">
+              <div className="flex items-start gap-4">
+                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-yellow-50 text-yellow-500 transition-colors duration-300 group-hover:bg-yellow-100">
+                  <Trophy className="h-6 w-6" />
+                </div>
+                <div className="space-y-2 relative">
+                  <div>
+                    <h3 className="text-xl font-bold">
+                      Inter University Programming Contests
+                    </h3>
+                    <p className="text-sm text-gray-500">2019-2023</p>
+                  </div>
+                  <p className="text-gray-600">
+                    Ranked top 10 in multiple national level Inter University
+                    Programming Contests.
                   </p>
                 </div>
               </div>
@@ -989,8 +1035,7 @@ export default function Portfolio() {
               Outreach
             </h2>
             <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl">
-              Mentoring and training the next generation of competitive
-              programmers
+              Mentoring and training the next generation of problem solvers
             </p>
           </div>
 
@@ -1001,6 +1046,15 @@ export default function Portfolio() {
               <CardHeader className="pb-2">
                 <CardTitle className="text-xl">
                   Bangladesh Competitive Programming Society
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => {
+                      window.open("https://therealbcs.com/", "_blank");
+                    }}
+                  >
+                    <ExternalLink className="mr-2 h-4 w-4" />
+                  </Button>
                 </CardTitle>
                 <CardDescription>
                   Training Contest Manager{" "}
@@ -1135,7 +1189,9 @@ export default function Portfolio() {
             <Card className="transition-all duration-300 hover:shadow-lg hover:scale-[1.01] hover:z-10">
               <div className="h-2 bg-purple-500 rounded-t-lg"></div>
               <CardHeader className="pb-2">
-                <CardTitle className="text-xl">PUST CP Workshop</CardTitle>
+                <CardTitle className="text-xl">
+                  PUST Competitive Programming Workshop
+                </CardTitle>
                 <CardDescription>
                   Guest Trainer{" "}
                   <span className="text-xs text-gray-500 ml-1">2023</span>
@@ -1168,7 +1224,7 @@ export default function Portfolio() {
                     Introduction to Math Olympiad (Primary Category)
                   </CardTitle>
                   <CardDescription className="mt-1">
-                    Co-authored guidebook for young math enthusiasts
+                    Co-authored book for young math enthusiasts
                   </CardDescription>
                 </div>
                 <Badge>Book</Badge>
@@ -1184,12 +1240,12 @@ export default function Portfolio() {
               </div>
               <div className="md:w-[70%]">
                 <p className="text-sm text-gray-500 mb-3">
-                  I co-authored a Bengali guidebook that gently introduces
-                  children to core problem-solving techniques and prepares them
-                  for Math Olympiads. Filled with step-by-step exercises, clear
-                  visual explanations, and fun, thought-provoking challenges,
-                  it’s designed to nurture young learners’ mathematical
-                  intuition from the ground up.
+                  I co-authored a Bengali book that gently introduces children
+                  to core problem-solving techniques and prepares them for Math
+                  Olympiads. Filled with step-by-step exercises, clear visual
+                  explanations, and fun, thought-provoking challenges, it’s
+                  designed to nurture young learners’ mathematical intuition
+                  from the ground up.
                 </p>
                 <div className="flex flex-wrap gap-2 mt-4">
                   <Badge variant="secondary">Problem Solving</Badge>
